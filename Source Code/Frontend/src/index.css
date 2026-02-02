@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* E-commerce Design System - Modern Luxury Store */
+
+@layer base {
+  :root {
+    /* Main palette - Refined charcoal + warm amber */
+    --background: 30 15% 98%;
+    --foreground: 30 10% 10%;
+
+    --card: 30 10% 100%;
+    --card-foreground: 30 10% 10%;
+
+    --popover: 30 10% 100%;
+    --popover-foreground: 30 10% 10%;
+
+    /* Primary - Deep charcoal */
+    --primary: 30 5% 12%;
+    --primary-foreground: 30 15% 98%;
+
+    /* Secondary - Warm stone */
+    --secondary: 30 8% 94%;
+    --secondary-foreground: 30 5% 20%;
+
+    /* Muted - Soft neutral */
+    --muted: 30 6% 92%;
+    --muted-foreground: 30 5% 45%;
+
+    /* Accent - Warm amber */
+    --accent: 35 90% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Additional semantic colors */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 30 8% 88%;
+    --input: 30 8% 88%;
+    --ring: 35 90% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom e-commerce tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(30 5% 12%) 0%, hsl(30 8% 20%) 100%);
+    --card-shadow: 0 4px 20px -4px hsl(30 10% 10% / 0.08);
+    --card-shadow-hover: 0 12px 40px -8px hsl(30 10% 10% / 0.15);
+    --glass: hsl(30 15% 98% / 0.8);
+
+    /* Sidebar tokens */
+    --sidebar-background: 30 10% 97%;
+    --sidebar-foreground: 30 10% 20%;
+    --sidebar-primary: 30 5% 12%;
+    --sidebar-primary-foreground: 30 15% 98%;
+    --sidebar-accent: 30 8% 94%;
+    --sidebar-accent-foreground: 30 5% 20%;
+    --sidebar-border: 30 8% 88%;
+    --sidebar-ring: 35 90% 50%;
+  }
+
+  .dark {
+    --background: 30 8% 8%;
+    --foreground: 30 10% 95%;
+
+    --card: 30 8% 10%;
+    --card-foreground: 30 10% 95%;
+
+    --popover: 30 8% 10%;
+    --popover-foreground: 30 10% 95%;
+
+    --primary: 30 10% 95%;
+    --primary-foreground: 30 8% 8%;
+
+    --secondary: 30 6% 16%;
+    --secondary-foreground: 30 10% 90%;
+
+    --muted: 30 6% 18%;
+    --muted-foreground: 30 5% 55%;
+
+    --accent: 35 90% 55%;
+    --accent-foreground: 30 8% 8%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 6% 18%;
+    --input: 30 6% 18%;
+    --ring: 35 90% 55%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(30 8% 6%) 0%, hsl(30 10% 14%) 100%);
+    --card-shadow: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --card-shadow-hover: 0 12px 40px -8px hsl(0 0% 0% / 0.5);
+    --glass: hsl(30 8% 8% / 0.8);
+
+    --sidebar-background: 30 8% 6%;
+    --sidebar-foreground: 30 10% 90%;
+    --sidebar-primary: 35 90% 55%;
+    --sidebar-primary-foreground: 30 8% 8%;
+    --sidebar-accent: 30 6% 14%;
+    --sidebar-accent-foreground: 30 10% 90%;
+    --sidebar-border: 30 6% 18%;
+    --sidebar-ring: 35 90% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .container-main {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-panel {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .product-card {
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .product-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-4px);
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--secondary)) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
